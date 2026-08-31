@@ -38,7 +38,7 @@ UE 5.7 기반의 멀티플레이어 슈터 포트폴리오 프로젝트입니다
 - 재질별 관통 판정
 - 벽 근접 시 총기 올림
 - 무기 슬롯별 Attach / Detach
-- Recoil 기반 반동
+- 총기 확산 (Spread)
 - Tracer / Muzzle Flash / Shell Eject / Material-based Impact / Camera Shake 사격 연출
 - Data Asset 기반 무기 데이터 관리
 
