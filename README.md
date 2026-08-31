@@ -40,3 +40,9 @@ UE 5.7 기반의 멀티플레이어 슈터 포트폴리오 프로젝트입니다
 - Recoil 기반 반동
 - Tracer / Muzzle Flash / Shell Eject / Material-based Impact / Camera Shake 사격 연출
 - Data Asset 기반 무기 데이터 관리
+
+<br>
+
+## Main Anim Graph
+
+<img src="AnimGraph_Image/MainAnim_Graph/MotionMatching.png" width="900">
