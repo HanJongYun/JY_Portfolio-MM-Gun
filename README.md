@@ -13,6 +13,11 @@ UE 5.7 기반의 멀티플레이어 슈터 포트폴리오 프로젝트입니다
 
 <br>
 
+## Demo Video
+
+[Gameplay Demo](https://youtu.be/kAqVKhKEXf0)
+
+<br>
 ## Main Features
 
 ### 1. Motion Matching & Parkour
