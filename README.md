@@ -16,7 +16,7 @@ UE 5.7 기반의 멀티플레이어 슈터 포트폴리오 프로젝트입니다
 ## Demo Video
 
 https://youtu.be/kAqVKhKEXf0
-
+[![Gameplay Demo](https://img.youtube.com/vi/kAqVKhKEXf0/0.jpg)](https://youtu.be/kAqVKhKEXf0)
 
 <br>
 
