@@ -19,9 +19,9 @@ UE 5.7 기반의 멀티플레이어 슈터 프로젝트입니다.
 |:---:|---|
 | 엔진 | Unreal Engine 5.7 |
 | 언어 | C++ |
-| 사용 기술 | Gameplay Ability System · Enhanced Input · Motion Matching · Motion Warping · Niagara |
+| 사용 기술 | Gameplay Ability System · Enhanced Input · Motion Matching · Motion Warping |
 | 네트워크 구조 | 서버·클라 분리 구조 (Play As Client) |
-| 참고 프로젝트 | - Game Animation Sample Project<br>- 공식 레퍼런스 프로젝트 |
+| 참고 프로젝트 | - Game Animation Sample Project<br>- Lyra Starter Game |
 
 </details>
 
