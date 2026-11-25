@@ -31,7 +31,7 @@ void UJY_WeaponInstance::OnEquipped() //override
 			SpreadRecoveryCooldownDelay = Data->SpreadRecoveryCooldownDelay;
 			bAllowFirstShotAccuracy = Data->bAllowFirstShotAccuracy;
 
-			/* 기본 데미지를 ASC에 셋팅, Execution이 발사 시 Source 어트리뷰트로 캡처 */
+			/* 기본 데미지를 ASC에 셋팅 */
 			if (APawn* OwningPawn = GetPawn())
 			{
 				if (IAbilitySystemInterface* AbilitySystemInterface = Cast<IAbilitySystemInterface>(OwningPawn))

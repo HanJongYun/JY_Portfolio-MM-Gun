@@ -3,6 +3,7 @@
 #include "AbilitySystemGlobals.h"
 #include "AbilitySystemComponent.h"
 #include "Actors/JY_BaseCharacter.h"
+#include "Actors/JY_WeaponActor.h"
 #include "CollisionQueryParams.h"
 #include "CollisionShape.h"
 #include "Utils/JY_WeaponUtils.h"
@@ -252,7 +253,8 @@ void UJY_BallisticSubsystem::HandleBallisticImpact(const FJY_BallisticShot& Shot
 	if (BaseCharacter == nullptr)
 		return;
 
-	BaseCharacter->ServerReportBallisticImpact(Hit, Shot.PredictionKey);
+	AJY_WeaponActor* WeaponActor = Shot.WeaponActor.Get();
+	BaseCharacter->ServerReportBallisticImpact(Hit, Shot.PredictionKey, WeaponActor);
 
 	UGameplayCueManager* GameplayCueManager = UAbilitySystemGlobals::Get().GetGameplayCueManager();
 	if (GameplayCueManager == nullptr)

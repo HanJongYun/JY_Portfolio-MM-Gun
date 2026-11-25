@@ -1,18 +1,12 @@
 #include "AbilitySystem/Executions/JY_DamageExecution.h"
 
 #include "AbilitySystemComponent.h"
+#include "Actors/JY_WeaponActor.h"
+#include "Data/JY_WeaponData.h"
 #include "Data/JY_AttributeSet.h"
 #include "GameplayEffectTypes.h"
 
 #include UE_INLINE_GENERATED_CPP_BY_NAME(JY_DamageExecution)
-
-UJY_DamageExecution::UJY_DamageExecution()
-{
-	/* Source(공격자) ASC의 BaseDamage 캡쳐 (GE Spec 만들어지는 시점(총 쏜 시점)으로 고정) */
-	BaseDamageCaptureDef = FGameplayEffectAttributeCaptureDefinition(UJY_AttributeSet::GetBaseDamageAttribute(), EGameplayEffectAttributeCaptureSource::Source, true);
-	RelevantAttributesToCapture.Add(BaseDamageCaptureDef);
-}
-
 
 void UJY_DamageExecution::Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const
 {
@@ -28,16 +22,13 @@ void UJY_DamageExecution::Execute_Implementation(const FGameplayEffectCustomExec
 	if (Instigator != nullptr && Instigator == TargetActor)
 		return;
 
-	const FGameplayTagContainer* SourceTags = Spec.CapturedSourceTags.GetAggregatedTags();
-	const FGameplayTagContainer* TargetTags = Spec.CapturedTargetTags.GetAggregatedTags();
+	/* 들고 있는 무기가 아니라 발사한 무기의 데미지 */
+	const AJY_WeaponActor* WeaponActor = Cast<AJY_WeaponActor>(Context.GetEffectCauser());
+	const UJY_WeaponData* WeaponData = WeaponActor != nullptr ? WeaponActor->GetWeaponData() : nullptr;
+	if (WeaponData == nullptr)
+		return;
 
-	FAggregatorEvaluateParameters EvaluateParameters;
-	EvaluateParameters.SourceTags = SourceTags;
-	EvaluateParameters.TargetTags = TargetTags;
-
-	float BaseDamage = 0.f;
-	ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(BaseDamageCaptureDef, EvaluateParameters, BaseDamage);
-
+	float BaseDamage = WeaponData->BaseDamage;
 	if (BaseDamage <= 0.f)
 		return;
 

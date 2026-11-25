@@ -23,7 +23,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "JY|Weapon")
 	TMap<EJY_WeaponAnimType, TObjectPtr<UJY_WeaponData>> Weapons;
 
-	/* 공용 데미지 GameplayEffect, 무기별 차이는 BaseDamage 어트리뷰트 값으로만 */
+	/* 공용 데미지 GameplayEffect, 무기별 차이는 무기 데이터의 BaseDamage 값으로만 */
 	UPROPERTY(EditDefaultsOnly, Category = "JY|Weapon|Damage")
 	TSubclassOf<UGameplayEffect> DamageGameplayEffectClass;
 };

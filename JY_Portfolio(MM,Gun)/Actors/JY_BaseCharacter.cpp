@@ -29,14 +29,14 @@ FGenericTeamId AJY_BaseCharacter::GetGenericTeamId() const
 	return TeamId;
 }
 
-void AJY_BaseCharacter::ServerReportBallisticImpact_Implementation(const FHitResult& HitResult, FPredictionKey PredictionKey)
+void AJY_BaseCharacter::ServerReportBallisticImpact_Implementation(const FHitResult& HitResult, FPredictionKey PredictionKey, AJY_WeaponActor* WeaponActor)
 {
 	if (HasAuthority() == false)
 		return;
 
 	ExecuteBallisticImpactCue(HitResult, PredictionKey);
 
-	if (ApplyBallisticImpactDamage(HitResult) == true)
+	if (ApplyBallisticImpactDamage(HitResult, WeaponActor) == true)
 	{
 		if (AJY_PlayerController* PC = Cast<AJY_PlayerController>(GetController()))
 		{
@@ -65,8 +65,11 @@ void AJY_BaseCharacter::ExecuteBallisticImpactCue(const FHitResult& HitResult, F
 }
 
 /* [Server] */
-bool AJY_BaseCharacter::ApplyBallisticImpactDamage(const FHitResult& HitResult)
+bool AJY_BaseCharacter::ApplyBallisticImpactDamage(const FHitResult& HitResult, AJY_WeaponActor* WeaponActor)
 {
-	AActor* WeaponActor = EquipmentComponent != nullptr ? EquipmentComponent->GetActiveWeapon() : nullptr;
+	/* 클라가 보낸 무기는 이 캐릭터가 가진 무기일 때만 사용 */
+	if (WeaponActor == nullptr || WeaponActor->GetOwner() != this)
+		return false;
+
 	return JY_WeaponUtils::ApplyWeaponDamage(this, WeaponActor, HitResult);
 }

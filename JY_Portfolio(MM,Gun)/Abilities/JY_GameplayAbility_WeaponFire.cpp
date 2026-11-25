@@ -214,6 +214,7 @@ bool UJY_GameplayAbility_WeaponFire::RegisterBallisticShot(const FGameplayAbilit
 	Shot.WeaponInstance = WeaponInstance;
 	Shot.RemainingPenetrationPower = WeaponData->PenetrationPower;
 	Shot.PenetrationCostBySurface = WeaponData->PenetrationCostBySurface;
+	Shot.WeaponActor = WeaponActor;
 	BallisticSubsystem->AddBallisticShot(MoveTemp(Shot));
 
 	return true;

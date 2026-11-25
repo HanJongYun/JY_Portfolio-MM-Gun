@@ -10,6 +10,7 @@
 class UPrimitiveComponent;
 class UAnimMontage;
 class UJY_WeaponInstance;
+class AJY_WeaponActor;
 
 UENUM(BlueprintType)
 enum class EJY_WeaponAnimType : uint8
@@ -101,6 +102,9 @@ struct FJY_BallisticShot
 
 	/* 발사 순간 복사한 재질별 관통 비용 */
 	TMap<TEnumAsByte<EPhysicalSurface>, float> PenetrationCostBySurface;
+
+	/* 발사한 무기 액터 */
+	TWeakObjectPtr<AJY_WeaponActor> WeaponActor;
 };
 
 /* 무기 오버레이 상체 포즈 종류 */

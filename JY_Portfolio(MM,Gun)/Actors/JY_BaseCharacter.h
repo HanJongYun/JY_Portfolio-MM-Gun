@@ -10,6 +10,7 @@
 #include "JY_BaseCharacter.generated.h"
 
 class UJY_EquipmentComponent;
+class AJY_WeaponActor;
 class UAbilitySystemComponent;
 
 UCLASS(abstract)
@@ -28,11 +29,11 @@ public:
 	FORCEINLINE UJY_EquipmentComponent* GetEquipmentComponent() const { return EquipmentComponent; }
 
 	UFUNCTION(Server, Reliable)
-	void ServerReportBallisticImpact(const FHitResult& HitResult, FPredictionKey PredictionKey);
+	void ServerReportBallisticImpact(const FHitResult& HitResult, FPredictionKey PredictionKey, AJY_WeaponActor* WeaponActor);
 
 protected:
 	void ExecuteBallisticImpactCue(const FHitResult& HitResult, FPredictionKey PredictionKey);
-	bool ApplyBallisticImpactDamage(const FHitResult& HitResult);
+	bool ApplyBallisticImpactDamage(const FHitResult& HitResult, AJY_WeaponActor* WeaponActor);
 
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "JY|Components")
